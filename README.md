@@ -24,5 +24,4 @@ return match(value,
 function positive (value) {
   return value > 0
 }
-
 ```

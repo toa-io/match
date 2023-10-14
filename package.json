@@ -1,0 +1,41 @@
+{
+  "name": "@toa.io/match",
+  "version": "0.1.0",
+  "description": "Pattern matching for JavaScript",
+  "keywords": [
+    "javascript",
+    "pattern matching"
+  ],
+  "license": "MIT",
+  "author": "temich <tema.gurtovoy@gmail.com>",
+  "homepage": "https://github.com/toa-io/match#readme",
+  "main": "transpiled/index.js",
+  "types": "transpiled/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toa-io/match.git"
+  },
+  "bugs": {
+    "url": "https://github.com/toa-io/match/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "peerDependencies": {
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.5",
+    "@types/node": "^20.8.6",
+    "eslint-config-standard-with-typescript": "^39.1.1",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1"
+  }
+}
