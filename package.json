@@ -1,5 +1,5 @@
 {
-  "name": "@toa.io/match",
+  "name": "pattern-matching",
   "version": "0.1.0",
   "description": "Pattern matching for JavaScript",
   "keywords": [
@@ -9,8 +9,8 @@
   "license": "MIT",
   "author": "temich <tema.gurtovoy@gmail.com>",
   "homepage": "https://github.com/toa-io/match#readme",
-  "main": "transpiled/index.js",
-  "types": "transpiled/index.d.ts",
+  "main": "transpiled/match.js",
+  "types": "transpiled/match.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/toa-io/match.git"

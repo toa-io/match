@@ -1,5 +1,6 @@
 import { check } from './check'
 import { fallback } from './fallback'
+import { apply } from './apply'
 import type { Value, Test, Result } from './types'
 
 export function match (value: Value, ...args: any[]): any {
@@ -13,7 +14,7 @@ export function match (value: Value, ...args: any[]): any {
     const result = args[i + 1] as Result
 
     if (check(test, value))
-      return result
+      return apply(value, result)
   }
 
   return fallback(value, otherwise)
