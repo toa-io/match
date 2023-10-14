@@ -13,10 +13,10 @@ return match(value,
   Error, (error) => throw error,
   // test function
   positive, (number) => Math.sqrt(number),
-  // object matching
-  { statusCode: 200 }, (response) => response.data,
   // regular expression
   /(?<left>\d+) \+ (?<right>\d+)/, (value, groups) => groups.left + groups.right,
+  // object matching
+  { statusCode: 200 }, (response) => response.data,
   // default
   (value) => value
 )

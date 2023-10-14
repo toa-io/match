@@ -1,6 +1,6 @@
-export function apply (value: any, result: any): any {
+export function apply (value: any, result: any, parameters: any[]): any {
   if (typeof result === 'function')
-    return result(value)
+    return result(value, ...parameters)
   else
     return result
 }

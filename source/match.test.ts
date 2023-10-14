@@ -100,6 +100,30 @@ describe('one of', () => {
   })
 })
 
+describe('regular expressions', () => {
+  it('should match expression', async () => {
+    const ok = match('hello',
+      /hello/, 'ok',
+      'nope')
+
+    expect(ok).toBe('ok')
+
+    const oh = match('nope',
+      /hello/, 'ok',
+      'nope')
+
+    expect(oh).toBe('nope')
+  })
+
+  it('should pass match groups', async () => {
+    const ok = match('hello',
+      /h(?<ell>.{3})o/, (_: string, groups: Record<string, string>) => groups.ell,
+      'nope')
+
+    expect(ok).toBe('ell')
+  })
+})
+
 it('should throw if no match and no default', () => {
   expect(() => match('nope', 1, 2)).toThrow('No match')
 })
