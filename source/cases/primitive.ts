@@ -4,7 +4,7 @@ export function test (test: any): boolean {
   return type === 'string' ||
     type === 'number' ||
     type === 'boolean' ||
-    (type === 'object' && test === null)
+    test === null
 }
 
 export function match (test: any, value: any): boolean {
