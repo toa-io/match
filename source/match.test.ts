@@ -129,19 +129,17 @@ it('should throw if no match and no default', () => {
 })
 
 it('should call result function', async () => {
-  const value = new Error()
-
-  const ok = match(value,
-    Error, () => 'yep',
+  const ok = match('hello',
+    'hello', (value: string) => `${value} world`,
     () => 'nope')
 
-  expect(ok).toBe('yep')
+  expect(ok).toBe('hello world')
 
-  const oh = match(value,
-    String, () => 'yep',
-    () => 'nope')
+  const oh = match('bye',
+    'hello', () => 'yep',
+    (value: string) => `${value} all`)
 
-  expect(oh).toBe('nope')
+  expect(oh).toBe('bye all')
 })
 
 function positive (x: number): boolean {
