@@ -18,6 +18,14 @@ describe('primitives', () => {
 
     expect(oh).toBe('default') // default
   })
+
+  it('should match null', async () => {
+    const ok = match(null,
+      null, true,
+      false)
+
+    expect(ok).toBe(true)
+  })
 })
 
 describe('constructors', () => {
