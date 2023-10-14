@@ -38,6 +38,42 @@ describe('constructors', () => {
   })
 })
 
+describe('test functions', () => {
+  it('should match lambda', async () => {
+    const pos = match(1,
+      (x: number) => x > 0, 'positive',
+      (x: number) => x < 0, 'negative',
+      'zero')
+
+    expect(pos).toBe('positive')
+
+    const neg = match(-1,
+      (x: number) => x > 0, 'positive',
+      (x: number) => x < 0, 'negative',
+      'zero')
+
+    expect(neg).toBe('negative')
+  })
+
+  it('should match named function', async () => {
+    function positive (x: number): boolean {
+      return x > 0
+    }
+
+    const pos = match(1,
+      positive, 'positive',
+      'nope')
+
+    expect(pos).toBe('positive')
+
+    const nope = match(0,
+      positive, 'positive',
+      'nope')
+
+    expect(nope).toBe('nope')
+  })
+})
+
 it('should throw if no match and no default', () => {
   expect(() => match('nope', 1, 2)).toThrow('No match')
 })
