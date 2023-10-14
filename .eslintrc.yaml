@@ -55,3 +55,6 @@ parserOptions:
   project: ./tsconfig.json
 env:
   jest: true
+ignorePatterns:
+  - '*.d.ts'
+  - '*.js'
