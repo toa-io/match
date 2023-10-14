@@ -56,10 +56,6 @@ describe('test functions', () => {
   })
 
   it('should match named function', async () => {
-    function positive (x: number): boolean {
-      return x > 0
-    }
-
     const pos = match(1,
       positive, 'positive',
       'nope')
@@ -71,6 +67,36 @@ describe('test functions', () => {
       'nope')
 
     expect(nope).toBe('nope')
+  })
+})
+
+describe('one of', () => {
+  it('should match one of values', async () => {
+    const ok = match(1,
+      [1, 2, 3], 'ok',
+      'nope')
+
+    expect(ok).toBe('ok')
+
+    const oh = match(4,
+      [1, 2, 3], 'ok',
+      'nope')
+
+    expect(oh).toBe('nope')
+  })
+
+  it('should match one of tests', async () => {
+    const yep = match(1,
+      [positive, 0], 'yep',
+      'nope')
+
+    expect(yep).toBe('yep')
+
+    const zero = match(0,
+      [positive, 0], 'yep',
+      'nope')
+
+    expect(zero).toBe('yep')
   })
 })
 
@@ -93,3 +119,7 @@ it('should call result function', async () => {
 
   expect(oh).toBe('nope')
 })
+
+function positive (x: number): boolean {
+  return x > 0
+}
