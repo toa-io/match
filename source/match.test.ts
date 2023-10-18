@@ -137,7 +137,8 @@ describe('objects', () => {
     { status: 200 },
     { data: 'ok' },
     {},
-    { status: (x: number) => x >= 200 && x < 300 }
+    { status: (x: number) => x >= 200 && x < 300 },
+    { data: /ok/ }
   ])('should match object', async (pattern) => {
     const ok = match({ status: 200, data: 'ok' },
       pattern, (value: any) => value.data,

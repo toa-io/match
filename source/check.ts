@@ -1,20 +1,20 @@
 import { type Pattern, type Value } from './types'
 import { cases } from './cases'
 
-export function check (test: Pattern, value: Value, parameters: any[]): boolean {
-  if (Array.isArray(test))
-    return iterate(test, value, parameters)
+export function check (pattern: Pattern, value: Value, parameters: any[]): boolean {
+  if (Array.isArray(pattern))
+    return iterate(pattern, value, parameters)
 
   for (const when of cases)
-    if (when.test(test))
-      return when.match(test, value, parameters)
+    if (when.test(pattern))
+      return when.match(pattern, value, parameters)
 
   return false
 }
 
-function iterate (tests: Pattern[], value: Value, parameters: any[]): boolean {
-  for (const test of tests)
-    if (check(test, value, parameters))
+function iterate (patterns: Pattern[], value: Value, parameters: any[]): boolean {
+  for (const pattern of patterns)
+    if (check(pattern, value, parameters))
       return true
 
   return false
