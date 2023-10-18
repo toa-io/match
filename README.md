@@ -2,6 +2,10 @@
 
 ## TL;DR
 
+```shell
+npm i @toa.io/match
+```
+
 ```javascript
 return match(value,
   // equals
