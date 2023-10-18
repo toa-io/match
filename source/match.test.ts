@@ -132,6 +132,33 @@ describe('regular expressions', () => {
   })
 })
 
+describe('objects', () => {
+  it.each([
+    { status: 200 },
+    { data: 'ok' },
+    {},
+    { status: (x: number) => x >= 200 && x < 300 }
+  ])('should match object', async (pattern) => {
+    const ok = match({ status: 200, data: 'ok' },
+      pattern, (value: any) => value.data,
+      'nope')
+
+    expect(ok).toBe('ok')
+  })
+
+  it.each([
+    { status: 201 },
+    { data: 'nope' },
+    { status: 200, data: 0 }
+  ])('should not match', async (pattern) => {
+    const nope = match({ status: 200, data: 'ok' },
+      pattern, (value: any) => value.data,
+      'nope')
+
+    expect(nope).toBe('nope')
+  })
+})
+
 it('should throw if no match and no default', () => {
   expect(() => match('nope', 1, 2)).toThrow('No match')
 })

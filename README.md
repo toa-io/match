@@ -23,6 +23,9 @@ return match(value,
   // object matching
   { statusCode: 200 }, (response) => response.data,
 
+  // property test function
+  { statusCode: (x) => x >= 200 && x < 300 }, (response) => response.data,
+
   // default
   (value) => value
 )
