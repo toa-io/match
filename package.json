@@ -1,6 +1,6 @@
 {
   "name": "@toa.io/match",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Pattern matching for JavaScript",
   "keywords": [
     "javascript",
@@ -22,7 +22,7 @@
     "access": "public"
   },
   "scripts": {
-    "prepublishOnly": "npx tsc",
+    "prepublishOnly": "rm -rf transpiled && npx tsc",
     "test": "jest"
   },
   "jest": {

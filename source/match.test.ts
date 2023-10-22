@@ -78,36 +78,6 @@ describe('test functions', () => {
   })
 })
 
-describe('one of', () => {
-  it('should match one of values', async () => {
-    const ok = match(1,
-      [1, 2, 3], 'ok',
-      'nope')
-
-    expect(ok).toBe('ok')
-
-    const oh = match(4,
-      [1, 2, 3], 'ok',
-      'nope')
-
-    expect(oh).toBe('nope')
-  })
-
-  it('should match one of tests', async () => {
-    const yep = match(1,
-      [positive, 0], 'yep',
-      'nope')
-
-    expect(yep).toBe('yep')
-
-    const zero = match(0,
-      [positive, 0], 'yep',
-      'nope')
-
-    expect(zero).toBe('yep')
-  })
-})
-
 describe('regular expressions', () => {
   it('should match expression', async () => {
     const ok = match('hello',
@@ -157,6 +127,38 @@ describe('objects', () => {
       'nope')
 
     expect(nope).toBe('nope')
+  })
+})
+
+describe('arrays', () => {
+  it('should match arrays', async () => {
+    const ok = match([1, 2, 3],
+      [1, 2, 3], 'ok',
+      'nope')
+
+    expect(ok).toBe('ok')
+
+    const oh = match([1, 2, 3],
+      [2, 3], 'ok',
+      'nope')
+
+    expect(oh).toBe('nope')
+  })
+
+  it('should match length', async () => {
+    const oh = match([1, 2, 3],
+      [1, 2], 'oh',
+      'nope')
+
+    expect(oh).toBe('nope')
+  })
+
+  it('should not match other types', async () => {
+    const oh = match('hello',
+      [1, 2, 3], 'oh',
+      'nope')
+
+    expect(oh).toBe('nope')
   })
 })
 

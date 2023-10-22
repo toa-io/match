@@ -11,9 +11,6 @@ return match(value,
   // equals
   1, () => 'One!',
 
-  // equals one of
-  ['Yes', 'No'], (answer) => `Answer is ${answer}`,
-
   // instanceof
   Readable, (stream) => stream.read(),
   Error, 'oopsie!',
@@ -26,6 +23,9 @@ return match(value,
 
   // object matching
   { statusCode: 200 }, (response) => response.data,
+
+  // array matching
+  [0, 1], (numbers) => `${numbers[0]} + ${numbers[1]}`,
 
   // nested test function
   { statusCode: (x) => x >= 200 && x < 300 }, (response) => response.data,
