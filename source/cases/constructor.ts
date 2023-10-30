@@ -5,5 +5,7 @@ export function test (test: any): boolean {
 }
 
 export function match (test: any, value: any): boolean {
-  return value instanceof test
+  return typeof value === 'function'
+    ? value === test
+    : value instanceof test
 }

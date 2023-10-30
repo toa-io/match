@@ -162,6 +162,18 @@ describe('arrays', () => {
   })
 })
 
+it('should compare classes', async () => {
+  // eslint-disable-next-line @typescript-eslint/no-extraneous-class
+  class Class {}
+
+  const value = Class
+
+  const ok = match(value,
+    Class, 'ok')
+
+  expect(ok).toBe('ok')
+})
+
 it('should throw if no match and no default', () => {
   expect(() => match('nope', 1, 2)).toThrow('No match')
 })
