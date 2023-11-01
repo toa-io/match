@@ -5,7 +5,21 @@ export function test (test: any): boolean {
 }
 
 export function match (test: any, value: any): boolean {
+  if (test.name === 'String')
+    return typeof value === 'string'
+
   return typeof value === 'function'
     ? value === test
-    : value instanceof test
+    : test.name in primitives
+      // eslint-disable-next-line valid-typeof
+      ? typeof value === primitives[test.name]
+      : value instanceof test
+}
+
+const primitives: Record<string, string> = {
+  String: 'string',
+  Number: 'number',
+  Boolean: 'boolean',
+  Symbol: 'symbol',
+  BigInt: 'bigint'
 }

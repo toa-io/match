@@ -44,6 +44,18 @@ describe('constructors', () => {
 
     expect(oh).toBe('nope')
   })
+
+  it.each([
+    ['String', String, 'test'],
+    ['Number', Number, 1],
+    ['Boolean', Boolean, false]
+  ])('should match %s', async (_, Type, value) => {
+    const yep = match(value,
+      Type, 'yep',
+      'nope')
+
+    expect(yep).toBe('yep')
+  })
 })
 
 describe('test functions', () => {
