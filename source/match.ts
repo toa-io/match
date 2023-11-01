@@ -5,12 +5,8 @@ import type { Value, Pattern, Result } from './types'
 
 export function match (value: Value, ...args: any[]): any {
   const last = args.length - 1
-
-  let otherwise: any
-
-  if (args.length % 2 === 1)
-    otherwise = args[last]
-
+  const odd = args.length % 2 === 1
+  const otherwise = odd ? args[last] : undefined
   const parameters: any[] = []
 
   for (let i = 0; i < last; i += 2) {
@@ -21,5 +17,8 @@ export function match (value: Value, ...args: any[]): any {
       return apply(value, result, parameters)
   }
 
-  return fallback(value, otherwise)
+  if (odd)
+    return fallback(value, otherwise)
+
+  throw new Error('No match found and no default clause given')
 }

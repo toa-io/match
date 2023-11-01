@@ -178,6 +178,12 @@ it('should throw if no match and no default', () => {
   expect(() => match('nope', 1, 2)).toThrow('No match')
 })
 
+it('should not throw if default is undefined', () => {
+  const undef = match('nope', 1, 2, undefined)
+
+  expect(undef).toBe(undefined)
+})
+
 it('should call result function', async () => {
   const ok = match('hello',
     'hello', (value: string) => `${value} world`,
