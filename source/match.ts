@@ -3,7 +3,7 @@ import { fallback } from './fallback'
 import { apply } from './apply'
 import type { Value, Pattern, Result } from './types'
 
-export function match (value: Value, ...args: any[]): any {
+export function match<T> (value: Value, ...args: any[]): T {
   const last = args.length - 1
   const odd = args.length % 2 === 1
   const otherwise = odd ? args[last] : undefined
