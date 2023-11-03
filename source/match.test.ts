@@ -48,7 +48,8 @@ describe('constructors', () => {
   it.each([
     ['String', String, 'test'],
     ['Number', Number, 1],
-    ['Boolean', Boolean, false]
+    ['Boolean', Boolean, false],
+    ['Object', Object, {}]
   ])('should match %s', async (_, Type, value) => {
     const yep = match(value,
       Type, 'yep',
