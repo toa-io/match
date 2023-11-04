@@ -3,7 +3,7 @@
 ## TL;DR
 
 ```shell
-npm i @toa.io/match
+npm i matchacho
 ```
 
 ```javascript
