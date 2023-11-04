@@ -6,6 +6,7 @@
 npm i matchacho
 ```
 
+
 ```javascript
 return match(value,
   // equals
@@ -37,4 +38,29 @@ return match(value,
 function positive (value) {
   return value > 0
 }
+```
+See [tests](source/match.test.ts).
+
+## Examples
+
+```javascript
+return match(input,
+  String, (item: string) => [item],
+  Array, input,
+  null, [])
+```
+
+```javascript
+return match(Class,
+  Role, () => new Role(value, this.discovery.roles),
+  Rule, () => new Rule(value, this.create.bind(this)),
+  Incept, () => new Incept(value, this.discovery),
+  () => new Class(value))
+```
+
+```javascript
+throw match(error.code,
+  'NOT_ACCEPTABLE', () => new UnsupportedMediaType(),
+  'TYPE_MISMATCH', () => new BadRequest(),
+  error)
 ```
