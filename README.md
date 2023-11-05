@@ -10,6 +10,8 @@ import { match } from 'matchacho'
 
 ## Examples
 
+_Approved by [Ed](https://github.com/Gems)._
+
 ```javascript
 return match(input,
   String, (item: string) => [item],
