@@ -1,11 +1,47 @@
 # Pattern matching for JavaScript
 
-## TL;DR
-
 ```shell
 npm i matchacho
 ```
 
+```javascript
+import { match } from 'matchacho'
+```
+
+## Examples
+
+```javascript
+return match(input,
+  String, (item: string) => [item],
+  Array, input,
+  null, [])
+```
+
+```javascript
+for (const directive of directives)
+  mask |= match<number>(directive,
+    'private', PRIVATE,
+    'public', PUBLIC,
+    'no-cache', NO_CACHE,
+    0)
+```
+
+```javascript
+return match(Class,
+  Role, () => new Role(value, this.discovery.roles),
+  Rule, () => new Rule(value, this.create.bind(this)),
+  Incept, () => new Incept(value, this.discovery),
+  () => new Class(value))
+```
+
+```javascript
+throw match(error.code,
+  'NOT_ACCEPTABLE', () => new UnsupportedMediaType(),
+  'TYPE_MISMATCH', () => new BadRequest(),
+  error)
+```
+
+## Reference
 
 ```javascript
 return match(value,
@@ -40,27 +76,3 @@ function positive (value) {
 }
 ```
 See [tests](source/match.test.ts).
-
-## Examples
-
-```javascript
-return match(input,
-  String, (item: string) => [item],
-  Array, input,
-  null, [])
-```
-
-```javascript
-return match(Class,
-  Role, () => new Role(value, this.discovery.roles),
-  Rule, () => new Rule(value, this.create.bind(this)),
-  Incept, () => new Incept(value, this.discovery),
-  () => new Class(value))
-```
-
-```javascript
-throw match(error.code,
-  'NOT_ACCEPTABLE', () => new UnsupportedMediaType(),
-  'TYPE_MISMATCH', () => new BadRequest(),
-  error)
-```
