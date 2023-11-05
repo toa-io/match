@@ -4,7 +4,8 @@ describe('primitives', () => {
   it.each([
     ['number', Math.random()],
     ['string', Math.random().toString()],
-    ['boolean', Math.random() > 0.5]
+    ['boolean', Math.random() > 0.5],
+    ['bigint', 1234567890123456789012345678901234567890n]
   ])('should match %s value', (_, value) => {
     const ok = match(value,
       value, true,
@@ -25,6 +26,22 @@ describe('primitives', () => {
       false)
 
     expect(ok).toBe(true)
+  })
+
+  it('should match symbol', async () => {
+    const value = Symbol('foo')
+
+    const ok = match(value,
+      value, true,
+      false)
+
+    expect(ok).toBe(true)
+
+    const oh = match(value,
+      Symbol('bar'), true,
+      false)
+
+    expect(oh).toBe(false)
   })
 })
 
@@ -106,9 +123,17 @@ describe('regular expressions', () => {
     expect(oh).toBe('nope')
   })
 
-  it('should pass match groups', async () => {
+  it('should pass groups', async () => {
     const ok = match('hello',
-      /h(?<ell>.{3})o/, (_: string, groups: Record<string, string>) => groups.ell,
+      /h(?<ell>.{3})o/, (groups: Record<string, string>) => groups.ell,
+      'nope')
+
+    expect(ok).toBe('ell')
+  })
+
+  it('should pass unnamed groups', async () => {
+    const ok = match('hello',
+      /h(.{3})o/, (groups: Record<string, string>) => groups[0],
       'nope')
 
     expect(ok).toBe('ell')

@@ -4,6 +4,8 @@ export function test (test: any): boolean {
   return type === 'string' ||
     type === 'number' ||
     type === 'boolean' ||
+    type === 'symbol' ||
+    type === 'bigint' ||
     test === null
 }
 

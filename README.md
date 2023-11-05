@@ -10,8 +10,6 @@ import { match } from 'matchacho'
 
 ## Examples
 
-_Approved by [Ed](https://github.com/Gems)._
-
 ```javascript
 return match(input,
   String, (item: string) => [item],
@@ -43,6 +41,8 @@ throw match(error.code,
   error)
 ```
 
+_Examples approved by [Ed](https://github.com/Gems)._
+
 ## Reference
 
 ```javascript
@@ -58,7 +58,8 @@ return match(value,
   positive, (number) => Math.sqrt(number),
 
   // regular expression
-  /(?<left>\d+) \+ (?<right>\d+)/, (value, groups) => groups.left + groups.right,
+  /(\d+) \+ (\d+)/, (groups) => groups[0] + groups[1],
+  /(?<left>\d+) \+ (?<right>\d+)/, (groups) => groups.left + groups.right,
 
   // object matching
   { statusCode: 200 }, (response) => response.data,

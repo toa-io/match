@@ -5,9 +5,6 @@ export function test (test: any): boolean {
 }
 
 export function match (test: any, value: any): boolean {
-  if (test.name === 'String')
-    return typeof value === 'string'
-
   return typeof value === 'function'
     ? value === test
     : test.name in primitives

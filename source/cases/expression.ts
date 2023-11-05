@@ -2,7 +2,7 @@ export function test (test: any): boolean {
   return test instanceof RegExp
 }
 
-export function match (test: any, value: any, parameters: any[]): boolean {
+export function match (test: RegExp, value: any, parameters: any[]): boolean {
   if (typeof value !== 'string')
     return false
 
@@ -11,7 +11,7 @@ export function match (test: any, value: any, parameters: any[]): boolean {
   if (match === null)
     return false
 
-  parameters.push(match.groups)
+  parameters.push(match.groups ?? match.slice(1))
 
   return true
 }
