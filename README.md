@@ -1,5 +1,17 @@
 # Pattern matching for JavaScript
 
+Patterns:
+
+- primitive values
+- primitive types
+- classes
+- regular expressions
+- test functions
+- arrays of patterns
+- objects with any of the above
+
+## Usage
+
 ```shell
 npm i matchacho
 ```
@@ -8,7 +20,7 @@ npm i matchacho
 import { match } from 'matchacho'
 ```
 
-## Examples
+## Real-world examples
 
 ```javascript
 return match(input,
@@ -52,10 +64,11 @@ return match(value,
 
   // instanceof
   Readable, (stream) => stream.read(),
-  Error, 'oopsie!',
+  Error, (error) => throw error,
 
   // test function
   positive, (number) => Math.sqrt(number),
+  (x) => x < 0, (number) => Math.sqrt(-number),
 
   // regular expression
   /(\d+) \+ (\d+)/, (groups) => groups[0] + groups[1],
@@ -78,4 +91,5 @@ function positive (value) {
   return value > 0
 }
 ```
+
 See [tests](source/match.test.ts).

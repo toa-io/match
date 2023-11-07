@@ -198,6 +198,22 @@ describe('arrays', () => {
 
     expect(oh).toBe('nope')
   })
+
+  it('should match test function', async () => {
+    const ok = match([1, 2, 3],
+      [1, 2, (x: number) => x === 3], 'ok',
+      'nope')
+
+    expect(ok).toBe('ok')
+  })
+
+  it('should regular expression', async () => {
+    const ok = match(['hello', 'world'],
+      ['hello', /world/], (arr: string[]) => arr,
+      'nope')
+
+    expect(ok).toStrictEqual(['hello', 'world'])
+  })
 })
 
 it('should compare classes', async () => {
