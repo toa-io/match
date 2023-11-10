@@ -1,19 +1,8 @@
 import { match } from './match'
-import type { Pattern, Result, Value } from './types'
+import { Base } from './Base'
+import type { Result } from './types'
 
-export class Matcher<T> {
-  private readonly args: [Value, ...rest: any[]]
-
-  public constructor (value: Value) {
-    this.args = [value]
-  }
-
-  public when (pattern: Pattern, result: Result): Matcher<T> {
-    this.args.push(pattern, result)
-
-    return this
-  }
-
+export class Matcher<T> extends Base {
   public default (result?: Result<T>): T {
     if (arguments.length !== 0)
       this.args.push(result)

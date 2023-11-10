@@ -272,6 +272,16 @@ it('should support chaining syntax', async () => {
   expect(undef).toBeUndefined()
 })
 
+it('should create instance', async () => {
+  const cases = match()
+    .when('hello', 'world')
+    .default('bye')
+
+  const world = cases.match('hello')
+
+  expect(world).toBe('world')
+})
+
 function positive (x: number): boolean {
   return x > 0
 }

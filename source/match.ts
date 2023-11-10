@@ -2,14 +2,19 @@ import { check } from './check'
 import { fallback } from './fallback'
 import { apply } from './apply'
 import { Matcher } from './Matcher'
+import { Instance } from './Instance'
 import type { Value, Pattern } from './types'
 
+export function match<T> (): Instance<T>
 export function match<T> (value: Value): Matcher<T>
 export function match<T> (value: Value, ...args: any[]): T
 
-export function match<T> (value: Value, ...args: any[]): T | Matcher<T> {
+export function match<T> (value?: Value, ...args: any[]): T | Matcher<T> | Instance<T> {
+  if (arguments.length === 0)
+    return new Instance<T>()
+
   if (args.length === 0)
-    return new Matcher(value)
+    return new Matcher<T>(value)
 
   const last = args.length - 1
   const odd = args.length % 2 === 1

@@ -40,6 +40,16 @@ match(value)
 
 `default()` must be placed last in the chain, event if no default value is provided.
 
+Or, as an instance:
+
+```
+const cases = match()
+  .when(pattern, result)
+  .default(default)
+
+cases.match(value)
+```
+
 Chaining syntax is more readable and provides better type inference.
 
 ## Usage
