@@ -12,7 +12,7 @@ Supported patterns:
 
 ## Syntax
 
-### Wierd
+### Weird
 
 The `match` function takes a value as the first argument,
 followed by an even number of arguments, each pair of which is a pattern and a matching result.
