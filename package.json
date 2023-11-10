@@ -1,6 +1,6 @@
 {
   "name": "matchacho",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Pattern matching for JavaScript",
   "keywords": [
     "javascript",

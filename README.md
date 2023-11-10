@@ -93,3 +93,17 @@ function positive (value) {
 ```
 
 See [tests](source/match.test.ts).
+
+## Chaining syntax
+
+Alternately, a chaining syntax may be used:
+
+```js
+return match(input)
+  .when(String, (item) => [item])
+  .when(Array, input)
+  .when(null, () => [])
+  .default()
+```
+
+`default()` must be placed last in the chain, event if no default value is provided.

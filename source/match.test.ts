@@ -252,6 +252,26 @@ it('should call result function', async () => {
   expect(oh).toBe('bye all')
 })
 
+it('should support chaining syntax', async () => {
+  const ok = match('hello')
+    .when('hello', (hello: string) => `${hello} world`)
+    .default()
+
+  expect(ok).toBe('hello world')
+
+  const def = match('hello')
+    .when('bye', 'nope')
+    .default('default')
+
+  expect(def).toBe('default')
+
+  const undef = match('hello')
+    .when('bye', 'nope')
+    .default(undefined)
+
+  expect(undef).toBeUndefined()
+})
+
 function positive (x: number): boolean {
   return x > 0
 }
