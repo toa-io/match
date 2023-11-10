@@ -58,7 +58,7 @@ import { match } from 'matchacho'
 return match(input,
   String, (item: string) => [item],
   Array, input,
-  null, [])
+  null, () => [])
 ```
 
 Same as above with chaining syntax:
