@@ -18,7 +18,6 @@ The `match` function takes a value as the first argument,
 followed by an even number of arguments, each pair of which is a pattern and a matching result.
 Optionally, a default value may be provided as the last argument.
 
-
 ```
 match(value,
   pattern, result,
