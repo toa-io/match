@@ -1,6 +1,6 @@
 # Pattern matching for JavaScript
 
-Patterns:
+Supported patterns:
 
 - primitive values
 - primitive types
