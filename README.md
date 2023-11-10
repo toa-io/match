@@ -40,7 +40,9 @@ match(value)
 
 `default()` must be placed last in the chain, event if no default value is provided.
 
-Or, as an instance:
+Chaining syntax is more readable and provides better type inference.
+
+Another option is to create an instance:
 
 ```
 const cases = match()
@@ -49,8 +51,6 @@ const cases = match()
 
 cases.match(value)
 ```
-
-Chaining syntax is more readable and provides better type inference.
 
 ## Usage
 
