@@ -1,5 +1,7 @@
 # Pattern matching for JavaScript
 
+Read [TC39 proposal](https://github.com/tc39/proposal-pattern-matching).
+
 Supported patterns:
 
 - primitive values
