@@ -107,6 +107,14 @@ throw match(error.code,
   error)
 ```
 
+```javascript
+return match<Buffer>(type,
+  'image/heic', async () => await convert({ buffer, format: 'JPEG' }),
+  /image\/(?!jpeg$|png$|gif$)/, async () => await sharp(buffer).jpeg().toBuffer(),
+  'image/gif', async () => await sharp(buffer).png().toBuffer(),
+  buffer)
+```
+
 _Examples approved by [Ed](https://github.com/Gems)._
 
 ## Reference
